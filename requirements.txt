@@ -1,0 +1,8 @@
+flasK
+gunicorn
+flask-sqlalchemy
+flask-login
+opencv-contrib-python
+pytesseract
+imutils
+numpy
