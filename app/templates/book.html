@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="column is-4 is-offset-4">
-    <h3 class="title">Select Parking Slot</h3>
+    <h3 class="title">Book Your Slot</h3>
     <div class="box">
         
             
@@ -17,12 +17,21 @@
                 {% else %}
                 <div class="field">
                 <form method="POST" action="/book">
-                {% for slot in slots %}
-                <div class="field"><input type="radio" name="slot" value="{{ slot }}" class="radio"> <h2 class="is-large">{{ slot }}</h2></div> 
-                {% endfor %}
-                 
+                    <fieldset>
+                        <legend>Selecting elements</legend>
+                        <p>
+                           <label>Select Slot Number</label>
+                           <select id = "slot" name="slot">
+                            {% for slot in slots %}
+                             <option name="slot" class="btn btn-default" value = "{{ slot }}">{{ slot }}</option>
+                             {% endfor %}
+                             </select>
+                        </p>
+                     </fieldset>
                 
-                <button class="button is-block is-info is-large is-fullwidth" type='Submit'>Done</button>
+                <center>
+                <button class="button is-info " type='Submit'>Book</button>
+            </center>
             </form>
                 </div>
             {% endif %}

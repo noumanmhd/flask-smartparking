@@ -3,5 +3,44 @@
 {% block content %}
 <h1 class="title">
   Welcome, {{ name }}!!!
-</h1>
+</h1><br />
+<center>
+<table class="table table-dark">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+  </thead>
+    <td>Plate</td>
+    <td>{{ plate }}</td>
+  </tr>
+  
+
+  {% if booked %}
+  <tr>
+    <td>Status</td>
+    {% if allocated %}
+    <td>Allocated</td>
+    {% else %}
+    <td>Booked</td>
+    {% endif %}
+  </tr>
+  <tr>
+    <td>Slot</td>
+    <td>{{ slot }}</td>
+  </tr>
+  <tr>
+    <td>Remaining Time</td>
+    <td>{{ min }} minuts {{ sec }} seconds</td>
+  </tr>
+  {% else %}
+  <tr>
+    <td>Status</td>
+    <td>Not Booked</td>
+  </tr>
+  {% endif %}
+</table>
+</center>
 {% endblock %}
