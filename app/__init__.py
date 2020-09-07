@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy 
 from flask_login import LoginManager 
 from datetime import datetime, timedelta
-
+import datetime as dt
 db = SQLAlchemy()
 
 
@@ -38,5 +38,19 @@ def current_time():
 def book_time():
     now = datetime.now() + timedelta(minutes=30)
     return int(now.strftime("%Y%m%d%H%M%S"))
+
+def get_time(t):
+    h = int(t[8:10])
+    m = int(t[10:12])
+    s = int(t[12:])
+    next_time = dt.time(h, m, s)
+    now = datetime.now()
+    now_time = now.time()
+    date = dt.date(1, 1, 1)
+
+    now_time = dt.datetime.combine(date, now_time)
+    next_time = dt.datetime.combine(date, next_time)
+    r = next_time - now_time
+    return  r.seconds//60, r.seconds - (r.seconds//60 * 60)
 
 app = create_app()
