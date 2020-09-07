@@ -31,10 +31,12 @@
     <td>Slot</td>
     <td>{{ slot }}</td>
   </tr>
-  <tr>
-    <td>Remaining Time</td>
-    <td>{{ min }} minuts {{ sec }} seconds</td>
-  </tr>
+    {% if not allocated %}
+    <tr>
+      <td>Remaining Time</td>
+      <td>{{ min }} minuts {{ sec }} seconds</td>
+    </tr>
+    {% endif %}
   {% else %}
   <tr>
     <td>Status</td>
